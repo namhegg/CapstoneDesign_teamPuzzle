@@ -6,11 +6,6 @@ using System.Collections.Generic;
 
 public class Level :MonoBehaviour
 {
-    public void OnClickGotoSelect()
-    {
-        SceneManager.LoadScene("LevelScene");
-    }
-
     public void OnClickQuit()
     {
         #if UNITY_EDITOR
@@ -19,4 +14,5 @@ public class Level :MonoBehaviour
                 Application.Quit();
         #endif
     }
+
 }
