@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class movementx : MonoBehaviour
 {
@@ -46,7 +48,6 @@ public class movementx : MonoBehaviour
             // TODO. 0.5f ¹üÀ§¸¸ ¹Ù²ã
             tf.position = new Vector3(tf.position.x, 0.5f, tf.position.z);
         }
-
     }
 
     private void OnMouseUp()
