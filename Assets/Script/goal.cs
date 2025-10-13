@@ -7,11 +7,13 @@ public class goal : MonoBehaviour
 {
     public GameObject gameover;
     public GameObject restart;
+    public GameObject winTextObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-}
+
+    }
 
 // Update is called once per frame
 void Update()
@@ -22,11 +24,13 @@ void Update()
     {
         if(other.tag == "Player")
             Time.timeScale = 0;
-            gameover.SetActive(true);
-            restart.SetActive(true);
+            winTextObject.SetActive(true);
     }
-
-    public void Restart()
+    public void OnclickQuit()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
+    public void OnclickRestart()
     {
         SceneManager.LoadScene("Stage1-1");
     }
