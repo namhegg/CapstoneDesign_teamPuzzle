@@ -1377,6 +1377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ccb33cf8868d045861a933a3fdf931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minX: 0
+  maxX: 0
 --- !u!114 &1085319255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1423,8 @@ MonoBehaviour:
   gameover: {fileID: 0}
   restart: {fileID: 0}
   winTextObject: {fileID: 0}
+  Player: {fileID: 0}
+  Goal: {fileID: 0}
 --- !u!4 &1271569507
 Transform:
   m_ObjectHideFlags: 0

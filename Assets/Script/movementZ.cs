@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class movementz : MonoBehaviour
 {
+    [Header("z 이동 제한 범위")]
+    public float minZ = 0.0f;
+    public float maxZ = 0.0f;
+
     Transform tf;
     Vector3 startPos;
     Vector3 rstartPos;
@@ -37,16 +41,16 @@ public class movementz : MonoBehaviour
         deltaPos = Camera.main.ScreenToWorldPoint(Input.mousePosition + rstartPos);
         tf.position = new Vector3(tf.position.x, tf.position.y, deltaPos.z);
         // TODO. -17.5f 범위만 바꿔
-        if (-17.5f > deltaPos.z)
+        if (minZ > deltaPos.z)
         {
             // TODO. -17.5f 범위만 바꿔
-            tf.position = new Vector3(tf.position.x, tf.position.y, 17.5f);
+            tf.position = new Vector3(tf.position.x, tf.position.y, minZ);
         }
         // TODO. 0.5f 범위만 바꿔
-        else if (0.5f < deltaPos.z) 
+        else if (maxZ < deltaPos.z) 
         {
             // TODO. 0.5f 범위만 바꿔
-            tf.position = new Vector3(tf.position.x, tf.position.y, 0.5f);
+            tf.position = new Vector3(tf.position.x, tf.position.y, maxZ);
         }
     }
 

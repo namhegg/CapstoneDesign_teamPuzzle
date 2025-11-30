@@ -8,11 +8,16 @@ using Unity.AI.Navigation;
 
 public class movementX : MonoBehaviour
 {
+    [Header("x 이동 제한 범위")]
+    public float minX = 0.0f;
+    public float maxX = 0.0f;
+
     Transform tf;
     Vector3 startPos;
     Vector3 rstartPos;
     Vector3 deltaPos;
     bool clicked;
+
 
     private void Awake()
     {
@@ -37,16 +42,16 @@ public class movementX : MonoBehaviour
         deltaPos = Camera.main.ScreenToWorldPoint(Input.mousePosition + rstartPos);
         tf.position = new Vector3(deltaPos.x, tf.position.y, tf.position.z);
         // TODO. -17.5f 범위만 바꿔
-        if (-17.5f > deltaPos.x)
+        if (minX > deltaPos.x)
         {
             // TODO. -17.5f 범위만 바꿔
-            tf.position = new Vector3(-17.5f, tf.position.y, tf.position.z);
+            tf.position = new Vector3(minX, tf.position.y, tf.position.z);
         }
         // TODO.  0.5f 범위만 바꿔
-        else if (0.5f < deltaPos.x)
+        else if (maxX < deltaPos.x)
         {
             // TODO. 0.5f 범위만 바꿔
-            tf.position = new Vector3(0.5f, tf.position.y, tf.position.z);
+            tf.position = new Vector3(maxX, tf.position.y, tf.position.z);
         }
     }
 

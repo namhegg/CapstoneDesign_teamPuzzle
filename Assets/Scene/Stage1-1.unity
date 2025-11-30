@@ -1530,6 +1530,8 @@ MonoBehaviour:
   gameover: {fileID: 0}
   restart: {fileID: 0}
   winTextObject: {fileID: 0}
+  Player: {fileID: 0}
+  Goal: {fileID: 0}
 --- !u!4 &2090123660
 Transform:
   m_ObjectHideFlags: 0
