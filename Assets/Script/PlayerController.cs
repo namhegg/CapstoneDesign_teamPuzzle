@@ -194,15 +194,6 @@ public class PlayerController : MonoBehaviour
             if (playerHit.transform.GetComponent<Walkable>() != null)
             {
                 currentCube = playerHit.transform;
-
-                if (playerHit.transform.GetComponent<Walkable>().isStair)
-                {
-                    DOVirtual.Float(GetBlend(), blend, .1f, SetBlend);
-                }
-                else
-                {
-                    DOVirtual.Float(GetBlend(), 0, .1f, SetBlend);
-                }
             }
         }
     }

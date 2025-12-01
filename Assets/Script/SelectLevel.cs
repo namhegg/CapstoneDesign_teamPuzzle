@@ -8,12 +8,12 @@ public class SelectLevel : MonoBehaviour
 {
     public void OnClickLevel1_1()
     {
-        SceneManager.LoadScene("Stage1-1");
+        SceneManager.LoadScene("Stage1");
     }
 
     public void OnClickLevel1_2()
     {
-        SceneManager.LoadScene("1-2");
+        SceneManager.LoadScene("Stage2");
     }
 
     public void OnClickLevel1_3()

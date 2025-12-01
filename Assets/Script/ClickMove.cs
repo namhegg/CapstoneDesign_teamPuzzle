@@ -33,7 +33,7 @@ public class ClickMove : MonoBehaviour
             transform.position + transform.TransformVector(0, -1.2f, .5f),  // 오브젝트의 앞에서 나오도록 하기
             transform.TransformDirection(0, 0.1f, -0.2f)                    // 오브젝트의 아랫대각방향으로 나와 바닥 탐지
         );
-        // Debug.DrawLine(rayRoad1.origin, rayRoad1.origin + rayRoad1.direction * 0.8f, Color.red); 개발 편의성을 위한 ray 표시
+        Debug.DrawLine(rayRoad1.origin, rayRoad1.origin + rayRoad1.direction * 0.8f, Color.red); //개발 편의성을 위한 ray 표시
 
         if(Physics.Raycast(rayRoad1, out RaycastHit hitCiff) == false)      // ray를 통해 길이 없는 지 확인
         {

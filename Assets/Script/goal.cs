@@ -2,37 +2,34 @@ using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class goal : MonoBehaviour
 {
-    public GameObject gameover;
-    public GameObject restart;
-    public GameObject winTextObject;
-    public GameObject Player;
-    public GameObject Goal;
+    public VisualEffect finishVFX;   // 인스펙터에서 vfxgraph_finish 드래그
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        this.Player = GameObject.Find("Player");
-        this.Goal = GameObject.Find("Finish");
-    }
+    public GameObject clearUI;       // 클리어 UI가 있으면 연결 (없으면 비워둬도 OK)
 
-// Update is called once per frame
-void Update()
-    {
-        Vector3 p = Player.transform.position;
-        Vector3 g = Goal.transform.position;
-        Vector3 dir = p - g;
-        
-        
+    bool isCleared = false;
 
-    }
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-            Time.timeScale = 0;
-            winTextObject.SetActive(true);
+        if (isCleared) return;                
+        if (!other.CompareTag("Player")) return;
+
+        isCleared = true;
+        Debug.Log("클리어!");
+        finishVFX.Play();
+
+        if (clearUI != null)
+        {
+            Debug.LogWarning("clearUI!!!");
+            clearUI.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("clearUI가 Inspector에 할당되어 있지 않음!");
+        }
     }
     public void OnclickQuit()
     {
@@ -40,6 +37,15 @@ void Update()
     }
     public void OnclickRestart()
     {
-        SceneManager.LoadScene("Stage1-1");
+        SceneManager.LoadScene("Stage1");
+    }
+    public void OnclickRestart1()
+    {
+        SceneManager.LoadScene("Stage2");
+    }
+
+    public void OnClickPause()
+    {
+        SceneManager.LoadScene("LevelScene");
     }
 }

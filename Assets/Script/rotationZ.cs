@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
-public class rotationX : MonoBehaviour
+public class rotationZ : MonoBehaviour
 {
-    [Header("x 회전 범위")]
-    public float minX = 0.0f;
-    public float maxX = 0.0f;
+    [Header("z 회전 제한 범위")]
+    public float minZ = 0.0f;
+    public float maxZ = 0.0f;
 
     Transform tf;
     Vector3 startPos;
@@ -24,34 +19,29 @@ public class rotationX : MonoBehaviour
         tf = transform;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         startPos = Camera.main.WorldToScreenPoint(transform.position);
         rstartPos = startPos - Input.mousePosition;
-        deltaPos.x = startPos.x - rstartPos.x;
+        deltaPos.z = startPos.z - rstartPos.z;
     }
 
     private void OnMouseDrag()
     {
         deltaPos = Camera.main.ScreenToWorldPoint(Input.mousePosition + rstartPos);
-        rotation.x = (deltaPos.x + deltaPos.y) * Time.deltaTime * rotationSpeed; 
+        rotation.z = (deltaPos.z + deltaPos.y) * Time.deltaTime * rotationSpeed;
         tf.Rotate(rotation);
-        
 
-        if (minX > transform.rotation.x)
+
+        if (minZ > transform.rotation.z)
         {
 
             tf.rotation = Quaternion.identity;
         }
-        else if (maxX < transform.rotation.x)
+ 
+        else if (maxZ < transform.rotation.z)
         {
-  
+
             tf.rotation = Quaternion.identity;
         }
 
